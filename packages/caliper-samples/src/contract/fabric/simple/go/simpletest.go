@@ -22,6 +22,7 @@ const ERROR_ACCOUNT_ABNORMAL = "{\"code\":303, \"reason\": \"abnormal account\"}
 const ERROR_MONEY_NOT_ENOUGH = "{\"code\":304, \"reason\": \"account's money is not enough\"}"
 
 
+var log = shim.NewLogger("chaincode")
 
 type SimpleChaincode struct {
 
@@ -29,13 +30,14 @@ type SimpleChaincode struct {
 
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	// nothing to do
+    log.Infof("init")
 	return shim.Success(nil)
 }
 
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	function, args := stub.GetFunctionAndParameters()
-
-	if function == "open" {
+    log.Infof("Invoke function=%v,args=%v\n", function, args)
+    if function == "open" {
 		return t.Open(stub, args)
 	}
 	if function == "delete" {
@@ -47,6 +49,9 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	if function == "transfer" {
 		return t.Transfer(stub, args)
 	}
+    if function == "savedata" {
+        return t.SaveData(stub, args)
+    }
 
 	return shim.Error(ERROR_WRONG_FORMAT)
 }
@@ -75,6 +80,20 @@ func (t *SimpleChaincode) Open(stub shim.ChaincodeStubInterface, args []string) 
 	}
 
 	return shim.Success(nil)
+}
+
+func (t *SimpleChaincode) SaveData(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+    if len(args) != 1 {
+        return shim.Error(ERROR_WRONG_FORMAT)
+    }
+
+    err := stub.PutState(stub.GetTxID(), []byte(args[0]))
+    if err != nil {
+        s := fmt.Sprintf(ERROR_SYSTEM, err.Error())
+        return shim.Error(s)
+    }
+
+    return shim.Success(nil)
 }
 
 // delete an account, should be [delete account]
