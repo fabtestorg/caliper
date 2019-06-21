@@ -85,7 +85,7 @@ module.exports.run = async function(absConfigFile, absNetworkFile, admin, client
         const allTests = configObject.test.rounds;
         for (let test of allTests) {
             ++testIdx;
-            const response = await tester.runTestRounds(test, (testIdx === allTests.length));
+            const response = await tester.runTestRounds(monitor, test, (testIdx === allTests.length));
             successes += response.successes;
             failures += response.failures;
         }

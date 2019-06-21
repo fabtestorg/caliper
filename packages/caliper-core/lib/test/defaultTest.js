@@ -53,7 +53,7 @@ class DefaultTest {
      * @returns {Object} the number of successful and failed tests
      * @async
      */
-    async runTestRounds(args, final) {
+    async runTestRounds(monitor, args, final) {
         logger.info(`####### Testing '${args.label}' #######`);
         const testLabel   = args.label;
         const testRounds  = args.txDuration ? args.txDuration : args.txNumber;
@@ -132,7 +132,7 @@ class DefaultTest {
                 if(!final || testIdx !== tests.length) {
                     logger.info('Waiting 5 seconds for the next round...');
                     await CaliperUtils.sleep(5000);
-                    await this.monitor.restart();
+                    await monitor.restart();
                 }
             } catch (err) {
                 this.demo.pauseWatch();
