@@ -101,7 +101,7 @@ orderers:
   orderer0.ord1.example.com:
     url: grpcs://10.10.88.92:7050
     grpcOptions:
-      ssl-target-name-override: orderer0.ord1.example.com
+        ssl-target-name-override: orderer0.ord1.example.com
     tlsCACerts:
         path: test/config/crypto-config/ordererOrganizations/ord1.example.com/orderers/orderer0.ord1.example.com/msp/tlscacerts/tlsca.ord1.example.com-cert.pem
   orderer1.ord1.example.com:
@@ -111,11 +111,11 @@ orderers:
     tlsCACerts:
         path: test/config/crypto-config/ordererOrganizations/ord1.example.com/orderers/orderer1.ord1.example.com/msp/tlscacerts/tlsca.ord1.example.com-cert.pem
   orderer2.ord1.example.com:
-      url: grpcs://10.10.89.189:7050
-      grpcOptions:
-          ssl-target-name-override: orderer2.ord1.example.com
-      tlsCACerts:
-          path: test/config/crypto-config/ordererOrganizations/ord1.example.com/orderers/orderer2.ord1.example.com/msp/tlscacerts/tlsca.ord1.example.com-cert.pem
+    url: grpcs://10.10.89.189:7050
+    grpcOptions:
+        ssl-target-name-override: orderer2.ord1.example.com
+    tlsCACerts:
+        path: test/config/crypto-config/ordererOrganizations/ord1.example.com/orderers/orderer2.ord1.example.com/msp/tlscacerts/tlsca.ord1.example.com-cert.pem
 
 peers:
   peer0.org1.example.com:
