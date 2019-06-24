@@ -38,7 +38,7 @@ function generateWorkload() {
     for(let i= 0; i < txnPerBatch; i++) {
         if (bc.bcType === 'fabric-ccp') {
             workload.push({
-                chaincodeFunction: 'transfer',
+                chaincodeFunction: 'invoke',
                 chaincodeArguments: ["a","b","1"],
             });
         } else {
