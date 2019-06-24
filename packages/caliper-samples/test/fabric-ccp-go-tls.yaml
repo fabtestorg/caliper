@@ -99,19 +99,19 @@ organizations:
 
 orderers:
   orderer0.ord1.example.com:
-    url: grpcs://localhost:7050
+    url: grpcs://10.10.88.92:7050
     grpcOptions:
       ssl-target-name-override: orderer0.ord1.example.com
     tlsCACerts:
         path: test/config/crypto-config/ordererOrganizations/ord1.example.com/orderers/orderer0.ord1.example.com/msp/tlscacerts/tlsca.ord1.example.com-cert.pem
   orderer1.ord1.example.com:
-    url: grpcs://localhost:8050
+    url: grpcs://10.10.107.187:7050
     grpcOptions:
         ssl-target-name-override: orderer1.ord1.example.com
     tlsCACerts:
         path: test/config/crypto-config/ordererOrganizations/ord1.example.com/orderers/orderer1.ord1.example.com/msp/tlscacerts/tlsca.ord1.example.com-cert.pem
   orderer2.ord1.example.com:
-      url: grpcs://localhost:9050
+      url: grpcs://10.10.89.189:7050
       grpcOptions:
           ssl-target-name-override: orderer2.ord1.example.com
       tlsCACerts:
@@ -119,17 +119,31 @@ orderers:
 
 peers:
   peer0.org1.example.com:
-    url: grpcs://localhost:7051
+    url: grpcs://10.10.64.228:7051
     grpcOptions:
       ssl-target-name-override: peer0.org1.example.com
       grpc.keepalive_time_ms: 600000
     tlsCACerts:
         path: test/config/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
+  peer1.org1.example.com:
+    url: grpcs://10.10.32.105:7051
+    grpcOptions:
+      ssl-target-name-override: peer1.org1.example.com
+      grpc.keepalive_time_ms: 600000
+    tlsCACerts:
+        path: test/config/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
 
   peer0.org2.example.com:
-    url: grpcs://localhost:9051
+    url: grpcs://10.10.130.30:7051
     grpcOptions:
       ssl-target-name-override: peer0.org2.example.com
       grpc.keepalive_time_ms: 600000
     tlsCACerts:
         path: test/config/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/tlscacerts/tlsca.org2.example.com-cert.pem
+  peer1.org2.example.com:
+    url: grpcs://10.10.79.1:7051
+    grpcOptions:
+      ssl-target-name-override: peer1.org2.example.com
+      grpc.keepalive_time_ms: 600000
+    tlsCACerts:
+        path: test/config/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/tlscacerts/tlsca.org2.example.com-cert.pem
