@@ -17,7 +17,7 @@ test:
               tps: 500
     arguments:
         money: 1
-    callback: benchmark/simple/transfer.js
+    callback: benchmark/test/transfer.js
 monitor:
   type:
   - docker
