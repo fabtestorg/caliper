@@ -5,19 +5,8 @@ test:
     performance with simple account opening & querying transactions
   clients:
     type: local
-    number: 1
+    number: 5
   rounds:
-  - label: savedata
-    description: Test description for savedata 2k data
-    txNumber:
-    - 100
-    rateControl:
-    - type: fixed-rate
-      opts:
-        tps: 50
-    arguments:
-      money: 10000
-    callback: benchmark/simple/savedata.js
   - label: open
     description: Test description for the opening of an account through the deployed chaincode
     txNumber:
